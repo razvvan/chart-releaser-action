@@ -181,9 +181,11 @@ lookup_latest_tag() {
     # fi
 
     set -euxo pipefail
-    git fetch --all
     git checkout master
     git pull
+    git log -3 --pretty=oneline
+
+
     git log -2 --pretty=oneline | tail -n 1 | awk '{print $1}'
 }
 
