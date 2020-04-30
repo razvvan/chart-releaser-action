@@ -181,7 +181,13 @@ lookup_latest_tag() {
     # fi
 
     set -euxo pipefail
+
+
+
     git checkout master
+
+    git version
+
     git pull
     git log -3 --pretty=oneline
 
