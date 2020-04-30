@@ -174,16 +174,9 @@ install_chart_releaser() {
 }
 
 lookup_latest_tag() {
-    set -euxo pipefail
-
-    git fetch --all
-
-    ls -al
-
-    git log -3 --pretty=oneline
-
-    echo "foo"
-
+    git fetch --all > /dev/null 2>&1
+    git checkout master > /dev/null 2>&1
+    git pull > /dev/null 2>&1
     git log -2 --pretty=oneline | tail -n 1 | awk '{print $1}'
     # git fetch --tags > /dev/null 2>&1
 
