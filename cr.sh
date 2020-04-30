@@ -176,9 +176,11 @@ install_chart_releaser() {
 lookup_latest_tag() {
     set -euxo pipefail
 
+    git fetch --all
+
     ls -al
 
-    git log -2
+    git log -3 --pretty=oneline
 
     echo "foo"
 
@@ -188,6 +190,8 @@ lookup_latest_tag() {
     # if ! git describe --tags --abbrev=0 2> /dev/null; then
     #     git rev-list --max-parents=0 --first-parent HEAD
     # fi
+
+    ""
 }
 
 filter_charts() {
