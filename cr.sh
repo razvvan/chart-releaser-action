@@ -180,19 +180,20 @@ lookup_latest_tag() {
     #     git rev-list --max-parents=0 --first-parent HEAD
     # fi
 
-    set -euxo pipefail
+    # set -euxo pipefail
 
 
 
-    git checkout master
+    # git checkout master
 
-    git version
+    # git version
 
-    git pull
-    git log -3 --pretty=oneline
+    # git pull
+    # git log -3 --pretty=oneline
 
 
-    git log -2 --pretty=oneline | tail -n 1 | awk '{print $1}'
+    # git log -2 --pretty=oneline | tail -n 1 | awk '{print $1}'
+    git rev-list HEAD | head -n 1
 }
 
 filter_charts() {
