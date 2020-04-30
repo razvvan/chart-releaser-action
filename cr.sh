@@ -53,7 +53,7 @@ main() {
     local latest_tag
     latest_tag=$(lookup_latest_tag)
 
-    echo "Discouvering changed charts since '$latest_tag'..."
+    echo "Discovering changed charts since '$latest_tag'..."
     local changed_charts=()
     readarray -t changed_charts <<< "$(lookup_changed_charts "$latest_tag")"
 
@@ -174,6 +174,13 @@ install_chart_releaser() {
 }
 
 lookup_latest_tag() {
+    set -euxo pipefail
+
+    ls -al
+
+    git show -1
+    echo "foo"
+
     git log -2 --pretty=oneline | tail -n 1 | awk '{print $1}'
     # git fetch --tags > /dev/null 2>&1
 
