@@ -174,11 +174,12 @@ install_chart_releaser() {
 }
 
 lookup_latest_tag() {
-    git fetch --tags > /dev/null 2>&1
+    git log -2 --pretty=oneline | tail -n 1 | awk '{print $1}'
+    # git fetch --tags > /dev/null 2>&1
 
-    if ! git describe --tags --abbrev=0 2> /dev/null; then
-        git rev-list --max-parents=0 --first-parent HEAD
-    fi
+    # if ! git describe --tags --abbrev=0 2> /dev/null; then
+    #     git rev-list --max-parents=0 --first-parent HEAD
+    # fi
 }
 
 filter_charts() {
