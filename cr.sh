@@ -180,10 +180,10 @@ lookup_latest_tag() {
     #     git rev-list --max-parents=0 --first-parent HEAD
     # fi
 
-
-    git fetch --all > /dev/null 2>&1
-    git checkout master > /dev/null 2>&1
-    git pull > /dev/null 2>&1
+    set -euxo pipefail
+    git fetch --all
+    git checkout master
+    git pull
     git log -2 --pretty=oneline | tail -n 1 | awk '{print $1}'
 }
 
