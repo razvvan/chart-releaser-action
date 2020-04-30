@@ -178,7 +178,8 @@ lookup_latest_tag() {
 
     ls -al
 
-    git show -1
+    git log -2
+
     echo "foo"
 
     git log -2 --pretty=oneline | tail -n 1 | awk '{print $1}'
